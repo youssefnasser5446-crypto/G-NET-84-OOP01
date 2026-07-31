@@ -33,6 +33,44 @@
 
             #endregion
 
+            #region Question02
+
+            /*
+             Consider the following struct:
+             public struct Shipment
+                    {
+                        public string Description;
+                        public double Weight; 
+                        public decimal DeliveryFee;
+                    }
+
+            a) Identify at least three problems with this design from an encapsulation perspective.
+
+            ans => First, direct access to data fields means there are no rules governing the data;
+            any data assigned is accepted immediately.
+
+            Second, maintenance is difficult because modifications can have ripple effects outside the class.
+
+           Thirdly, this makes the debugging process more difficult,
+            as bugs are present in more than one class.
+
+            Fourthly, it lacks flexibility; if you extract a specific part of the project for use elsewhere,
+            it will cause errors in other classes.
+      ======================================================================================================
+            b) How can private fields and public properties improve this design?
+
+            ans => Making a field private prevents code in other classes from accessing it directly,
+            effectively acting as a form of protection.
+
+            Public properties safeguard the field's data by enforcing specific rules;
+            data is stored in the field only if it meets these criteria.
+
+            This approach also helps with debugging and maintenance—for instance,
+            if I need to rename the field, I only have to make the change in one place,
+            since the main code interacts with the properties rather than accessing the field directly.
+             */
+
+            #endregion
 
 
         }
