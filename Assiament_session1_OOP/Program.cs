@@ -72,6 +72,72 @@
 
             #endregion
 
+            #region part2_Practical
+
+            // ============================================================================
+            #endregion
+            Console.WriteLine("Enter Shipment 1 Data ");
+            Console.Write("Tracking Code :");
+            string trackCode =  Console.ReadLine()!;
+
+            Console.Write("Description :");
+            string description = Console.ReadLine()!;
+
+            Console.Write("Weight :");
+            float.TryParse(Console.ReadLine()!,out float weight);
+
+            Console.Write("Delivery Fee:");
+            decimal.TryParse(Console.ReadLine()!, out decimal deliveryFee);
+
+            Console.Write("City:");
+            string city= Console.ReadLine()!;
+
+            Console.Write("Street:");
+            string Street = Console.ReadLine()!; 
+
+            Console.Write("Building Number:");
+            int.TryParse(Console.ReadLine()!, out int buildingNumber);
+
+            DeliveryAddress DA = new DeliveryAddress();
+            DA.city = city;
+            DA.street = Street;
+            DA.BuildingNumber = buildingNumber;
+            Shipment ship = new Shipment(trackCode, description, weight, deliveryFee, DA);
+            DeliveryCenter DC = new DeliveryCenter();          
+            bool isAdded = DC.AddShipment(ship);
+            if (isAdded)
+            {
+                Console.WriteLine("Shipment added successfully.");
+            }
+            else Console.WriteLine("Shipment not added !");
+
+            Console.WriteLine("--- All Shipments ---");
+            Console.WriteLine(ship.PrintShipment());
+
+            Console.Write("Enter a tracking code to search:");
+            
+            string code = Console.ReadLine()!; // handeld inside the Delivery Center
+            if (!string.IsNullOrWhiteSpace(DC[code].TrackingCode))
+            {
+                Console.WriteLine(DC[code].PrintShipment());
+            }
+            else
+            {
+                Console.WriteLine("Shipment Not Found!");
+            }
+
+
+
+                Console.WriteLine("--- Struct Copy Test ---");
+
+            DeliveryAddress DV1 = new DeliveryAddress("Cairo", "Tahrir Street", 15);
+            Console.WriteLine(DV1.GetFullAddress());
+            DeliveryAddress DV2 = DV1;
+            DV2.street = "TypeMakramEbeid Street,";// value
+            DV2.BuildingNumber = 10;                                       
+            Console.WriteLine($"First Object {DV1.GetFullAddress()}\n Second Object{DV2.GetFullAddress()}");
+
+
 
         }
     }
